@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package FILE_STORAGE;
+
+enum FileType {
+    FILE = 0;
+    DIRECTORY = 1;
+}
+
+message ConfigPacket
+{
+    FileType type = 1; // directory/file
+    string name = 2; // directory/file name
+    uint64 chunks = 3; // number of chunks that will be sent
+    uint32 chunk_size = 4; // size of each chunk
+}
+
+message Packet {
+    fixed32 id = 1; // ID header
+    string file_content = 2; // content from the file
+}
